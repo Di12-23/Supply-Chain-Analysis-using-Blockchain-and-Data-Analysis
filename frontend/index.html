@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipment Tracker DApp</title>
+    <style>
+        /* Reset default margin and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa; /* Light grey background */
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('img.jpeg'); /* Background image */
+            background-size: cover; /* Cover the entire background */
+            background-position: center; /* Center the background image */
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background-color: rgba(255, 255, 255, 0.8); /* White container background with transparency */
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Soft shadow */
+            text-align: center; /* Center content */
+        }
+
+        h1 {
+            color: #007bff; /* Primary blue color */
+            margin-bottom: 30px;
+            font-size: 2.5rem; /* Larger font size for heading */
+        }
+
+        .menu {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap; /* Allows menu items to wrap on smaller screens */
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #fff; /* White text */
+            font-weight: bold;
+            padding: 15px 25px;
+            margin: 15px;
+            border-radius: 5px;
+            background-color: #007bff; /* Primary blue button background */
+            transition: background-color 0.3s ease, color 0.3s ease;
+            min-width: 200px; /* Minimum width for better touch interaction */
+            text-align: center;
+            display: block;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow */
+        }
+
+        .menu a:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
+        .menu a:active {
+            transform: translateY(1px); /* Slight push down effect on click */
+            box-shadow: none; /* Remove shadow on click */
+        }
+
+        @media screen and (max-width: 600px) {
+            .menu {
+                flex-direction: column; /* Stack menu items vertically on small screens */
+                text-align: center;
+            }
+            .menu a {
+                min-width: auto; /* Adjust minimum width for smaller screens */
+                width: 80%; /* Full width buttons on small screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Shipment Tracker DApp</h1>
+        <div class="menu">
+            <a href="create.html">Create Shipment</a>
+            <a href="update.html">Update Shipment</a>
+        </div>
+    </div>
+</body>
+</html>
