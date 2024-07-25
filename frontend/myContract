@@ -1,0 +1,45 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract SimpleSupplyChain {
+    struct Shipment {
+        uint256 id;
+        string description;
+        string currentLocation;
+        uint256 timestamp;
+        bool delivered;
+    }
+
+    mapping(uint256 => Shipment) public shipments;
+    uint256 public shipmentCounter;
+
+    event ShipmentCreated(uint256 id, string description, string currentLocation, uint256 timestamp);
+    event ShipmentUpdated(uint256 id, string currentLocation, uint256 timestamp, bool delivered);
+
+    function createShipment(string memory _description, string memory _currentLocation) public {
+        shipmentCounter++;
+        shipments[shipmentCounter] = Shipment(shipmentCounter, _description, _currentLocation, block.timestamp, false);
+        emit ShipmentCreated(shipmentCounter, _description, _currentLocation, block.timestamp);
+    }
+
+    function updateShipment(uint256 _shipmentId, string memory _currentLocation, bool _delivered) public {
+        require(_shipmentId > 0 && _shipmentId <= shipmentCounter, "Invalid shipment ID");
+        Shipment storage shipment = shipments[_shipmentId];
+        shipment.currentLocation = _currentLocation;
+        shipment.timestamp = block.timestamp;
+        shipment.delivered = _delivered;
+        emit ShipmentUpdated(_shipmentId, _currentLocation, block.timestamp, _delivered);
+    }
+
+    function getShipment(uint256 _shipmentId) public view returns (
+        uint256 id,
+        string memory description,
+        string memory currentLocation,
+        uint256 timestamp,
+        bool delivered
+    ) {
+        require(_shipmentId > 0 && _shipmentId <= shipmentCounter, "Invalid shipment ID");
+        Shipment storage shipment = shipments[_shipmentId];
+        return (shipment.id, shipment.description, shipment.currentLocation, shipment.timestamp, shipment.delivered);
+    }
+}
